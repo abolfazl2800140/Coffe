@@ -1,17 +1,13 @@
 import React from "react";
-import { Outlet, Route, Routes } from "react-router";
+// import { Outlet } from "react-router";
 import Login from "../pages/Login";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Layout from "../layout";
 
 const PageRoute = () => {
   const routes = createBrowserRouter([
     {
-      element: (
-        <div>
-          <Login />
-          <Outlet />
-        </div>
-      ),
+      element: <Layout />,
       path: "/",
       children: [
         {
