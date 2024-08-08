@@ -1,20 +1,28 @@
 import React from "react";
-import { Route, Routes } from "react-router";
+import { Outlet, Route, Routes } from "react-router";
 import Login from "../pages/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const PageRoute = () => {
-
-    const routes = createBrowserRouter([
+  const routes = createBrowserRouter([
+    {
+      element: (
+        <div>
+          <Login />
+          <Outlet />
+        </div>
+      ),
+      path: "/",
+      children: [
         {
-            element: <Login />,
-            path: "/"
-        }
-    ])
+          element: <Login />,
+          path: "login",
+        },
+      ],
+    },
+  ]);
 
-    return(
-            <RouterProvider router={routes}/>
-    )
-}
+  return <RouterProvider router={routes} />;
+};
 
 export default PageRoute;
