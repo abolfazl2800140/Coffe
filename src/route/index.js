@@ -1,22 +1,24 @@
 import React from "react";
-import { Route, Routes } from "react-router";
+// import { Outlet } from "react-router";
 import Login from "../pages/Login";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Layout from "../layout";
 
 const PageRoute = () => {
+  const routes = createBrowserRouter([
+    {
+      element: <Layout />,
+      path: "/",
+      children: [
+        {
+          element: <Login />,
+          path: "login",
+        },
+      ],
+    },
+  ]);
 
-    // const CheckLogin = () => {
-    //     const token = localStorage.getItem("userToken");
-    //     if (token) true;
-    //     else false;
-    // }
-
-    return(
-        <Routes>
-            <Route path="/">
-                <Route element={<Login />} path="/login"/>
-            </Route>
-        </Routes>
-    )
-}
+  return <RouterProvider router={routes} />;
+};
 
 export default PageRoute;
